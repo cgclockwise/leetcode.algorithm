@@ -1,0 +1,36 @@
+package Array;
+
+import java.util.Arrays;
+
+public class plusOne {
+	
+	public static int[] plusOne(int[] digits){
+		int carry = 1;
+		for(int i=digits.length-1;i>=0;i--){
+			if(carry == 0){
+				return digits;
+			}
+			else{
+				int tmp = digits[i] + carry;
+				carry = tmp/10;
+				digits[i] = tmp%10;
+			}
+		}
+		if(carry == 1){
+			int[] result = new int[digits.length+1];
+			result[0] = 1;
+			
+			return result;
+		}
+		return digits;
+	}
+	public static void main(String[] args) {
+		int[] test1 = {1,2,3,4};
+		int[] test2 = {9,9,9};
+		int[] test3 = {1,2,9,1};
+		System.out.println(Arrays.toString(plusOne(test1)));
+		System.out.println(Arrays.toString(plusOne(test2)));
+		System.out.println(Arrays.toString(plusOne(test3)));
+	}
+
+}
