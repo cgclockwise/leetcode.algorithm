@@ -1,0 +1,56 @@
+# leetcode.algorithm
+coding
+package Strings;
+
+import java.awt.List;
+import java.util.ArrayList;
+import java.util.Arrays;
+
+public class isPalindrome {
+	public static boolean isPalindrome(String s){
+		if(s.length()==0)
+			return true;
+		
+		char[]ss = s.toCharArray();
+		s = s.toLowerCase();
+		
+		System.out.println(Arrays.toString(ss));
+		char[] left = new char[100];
+		char[] right = new char[100];
+		int j = 0;
+		for(int i=0;i<s.length();i++){
+			
+			if(isAlphanum(ss[i])){
+				if('A'<= ss[i] && ss[i]<='Z'){
+					ss[i]+=32;
+				}
+				left[j] = ss[i];
+				j+=1;
+			}
+			
+		}
+		System.out.println(Arrays.toString(left));
+		int k = 0;
+		for(int i=s.length()-1;i>=0;i--){
+			if(isAlphanum(ss[i])){
+				right[k] = ss[i];
+				k++;
+			}
+		}
+		System.out.println(Arrays.toString(right));
+		if(Arrays.equals(left, right)){
+			return true;
+		}
+		return false;
+	}
+	static boolean isAlphanum(char c){
+		return('a' <= c && c <= 'z' || ('A' <= c && c <= 'Z') || ('0' <= c && c <= '9'));
+	}
+	
+
+	public static void main(String[] args) {
+		String test = "A man, a plan, a canal: Panama";
+		//String test = "ana";
+		System.out.println(isPalindrome(test));
+	}
+}
